@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Plagx Writing Companion Tests
+Bundle-SymbolicName: com.plagiarismcheckerx.plagx.eclipse.tests
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: Plagiarism Checker X
+Fragment-Host: com.plagiarismcheckerx.plagx.eclipse
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Require-Bundle: org.junit;bundle-version="4.13.0"

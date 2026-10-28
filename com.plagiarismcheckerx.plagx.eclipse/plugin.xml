@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension id="problem" name="Plagx Writing Companion" point="org.eclipse.core.resources.markers">
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.core.resources.textmarker"/>
+      <persistent value="true"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.startup">
+      <startup class="com.plagiarismcheckerx.plagx.eclipse.SaveListener"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            markerType="com.plagiarismcheckerx.plagx.eclipse.problem"
+            class="com.plagiarismcheckerx.plagx.eclipse.FixGenerator"/>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.plagiarismcheckerx.plagx.eclipse.PlagxPrefs$Initializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <page id="com.plagiarismcheckerx.plagx.eclipse.preferences"
+            name="Plagx Writing Companion"
+            class="com.plagiarismcheckerx.plagx.eclipse.PlagxPreferencePage"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <category id="com.plagiarismcheckerx.plagx.eclipse.category" name="Plagx"/>
+      <command id="com.plagiarismcheckerx.plagx.eclipse.checkDraft" name="Check Draft"
+               categoryId="com.plagiarismcheckerx.plagx.eclipse.category"/>
+      <command id="com.plagiarismcheckerx.plagx.eclipse.readiness" name="Show Writing Readiness"
+               categoryId="com.plagiarismcheckerx.plagx.eclipse.category"/>
+      <command id="com.plagiarismcheckerx.plagx.eclipse.formatBibliography" name="Format BibTeX as Reference List"
+               categoryId="com.plagiarismcheckerx.plagx.eclipse.category"/>
+      <command id="com.plagiarismcheckerx.plagx.eclipse.checkBibOnline" name="Check BibTeX References Online"
+               categoryId="com.plagiarismcheckerx.plagx.eclipse.category"/>
+      <command id="com.plagiarismcheckerx.plagx.eclipse.citeDoi" name="Insert Reference from DOI"
+               categoryId="com.plagiarismcheckerx.plagx.eclipse.category"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers">
+      <handler commandId="com.plagiarismcheckerx.plagx.eclipse.checkDraft"
+               class="com.plagiarismcheckerx.plagx.eclipse.Handlers$CheckDraft"/>
+      <handler commandId="com.plagiarismcheckerx.plagx.eclipse.readiness"
+               class="com.plagiarismcheckerx.plagx.eclipse.Handlers$Readiness"/>
+      <handler commandId="com.plagiarismcheckerx.plagx.eclipse.formatBibliography"
+               class="com.plagiarismcheckerx.plagx.eclipse.Handlers$FormatBibliography"/>
+      <handler commandId="com.plagiarismcheckerx.plagx.eclipse.checkBibOnline"
+               class="com.plagiarismcheckerx.plagx.eclipse.Handlers$CheckBibOnline"/>
+      <handler commandId="com.plagiarismcheckerx.plagx.eclipse.citeDoi"
+               class="com.plagiarismcheckerx.plagx.eclipse.Handlers$CiteDoi"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu id="com.plagiarismcheckerx.plagx.eclipse.menu" label="Plagx">
+            <command commandId="com.plagiarismcheckerx.plagx.eclipse.checkDraft" style="push"/>
+            <command commandId="com.plagiarismcheckerx.plagx.eclipse.readiness" style="push"/>
+            <separator name="bib" visible="true"/>
+            <command commandId="com.plagiarismcheckerx.plagx.eclipse.formatBibliography" style="push"/>
+            <command commandId="com.plagiarismcheckerx.plagx.eclipse.checkBibOnline" style="push"/>
+            <command commandId="com.plagiarismcheckerx.plagx.eclipse.citeDoi" style="push"/>
+         </menu>
+      </menuContribution>
+   </extension>
+</plugin>
