@@ -74,7 +74,7 @@ Plagx Writing Companion gives writing suggestions only. It does **not** check fo
 ## Development
 
 ```bash
-mvn clean verify
+./mvnw clean verify
 ```
 
 builds the plugin, runs the headless Eclipse tests and writes the p2 update site to `com.plagiarismcheckerx.plagx.eclipse.site/target/repository`. Pushing to `main` publishes the update site to GitHub Pages.

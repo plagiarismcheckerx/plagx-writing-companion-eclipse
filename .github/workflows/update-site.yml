@@ -25,7 +25,7 @@ jobs:
           java-version: 17
           cache: maven
       - name: Build plugin, tests and p2 update site
-        run: mvn -B clean verify
+        run: ./mvnw -B clean verify
       - uses: actions/upload-pages-artifact@v3
         with:
           path: com.plagiarismcheckerx.plagx.eclipse.site/target/repository
